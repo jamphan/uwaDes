@@ -13,7 +13,7 @@ int LCDClear(void)
 
 
 //-------------------------------------
-//Example
+//Example usage of the LED
 
 //init LCD
 LCDSetPos(10, 10); //set cursor to 10,10
@@ -22,15 +22,20 @@ LCDSetPos(10, 10); //set cursor to 10,10
 int encoderReading,
 int lcdcount = 0;
 
-https://github.com/kjph/uwaDes
+//event loop
 while(1) {
 
+	char *encodingDisplay;
 
 	//Get sensor value
 	encoderReading = ENCODERead(motorNo);
 
 	//format sensor reading to string and then print
-	asprintf(&encodingDisplay, "%d", encoderReading);
+	err = asprintf(&encodingDisplay, "%d", encoderReading);
+	if (err == -1) {
+		//memory allocation error!
+	}
+
 	LCDPrintf("Encoder Value: %s", encodingDisplay);
 	lcdcount++;
 
@@ -39,6 +44,12 @@ while(1) {
 		LCDClear();
 		lcdcount=0;
 	}
-	
+
+	//Note that asprintf allocates memory for our pointed address
+	//Hence we must free this!
+	//note that we create an uninitialized pointer, but aspinrtf
+	//we allocate memory for it!
+	free(encodingDisplay)
+
 }
-free(encodingDisplay)
+
