@@ -22,9 +22,9 @@ LCDSetPos(10, 10); //set cursor to 10,10
 int encoderReading,
 int lcdcount = 0;
 
+https://github.com/kjph/uwaDes
 while(1) {
 
-	char *encodingDisplay;
 
 	//Get sensor value
 	encoderReading = ENCODERead(motorNo);
@@ -39,7 +39,6 @@ while(1) {
 		LCDClear();
 		lcdcount=0;
 	}
-
-	free(encodingDisplay)
+	
 }
-
+free(encodingDisplay)
