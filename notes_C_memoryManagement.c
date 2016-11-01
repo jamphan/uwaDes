@@ -7,7 +7,7 @@
 // 	* Stores temporary variables created by each function (local scope), only while the function is called
 
 // HEAP
-// 	* Un-mananed memory (must be done manually)
+// 	* Un-managed memory (must be done manually)
 // 	* Memory is allocated in the HEAP with malloc() and calloc() calls
 // 	* All memory created in the HEAP must be free'd with free(), if not then we have memory leaks!
 // 	* HEAP is slower to use than STACK because of the need to interface with pointers
