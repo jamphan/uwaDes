@@ -42,6 +42,8 @@ int MOTORDrive ( int motorNo, int motorSpeedRel ){}
 // lin_speed = the speed to travel at (mm/s)
 //returns 0 on success and 1 on error
 int VWStraight(int dist, int lin_speed){}
-
+	if (err = VWStraight(10, 10)) {
+		printf("Error: direction\n");
+	}
 
 
