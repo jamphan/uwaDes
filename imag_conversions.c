@@ -1,8 +1,8 @@
 #include "eyebot.h"
 #include <math.h>
 
-#define size QVGA_size
-#define pixels QVGA_PIXELS
+#define SIZE QVGA_SIZE
+#define PIXELS QVGA_PIXELS
 
 #define NO_HUE 255
 
@@ -50,4 +50,34 @@ BYTE RGBtoSat(BYTE r, BYTE g, BYTE b) {
 
 BYTE RGBtoInt(BYTE r, BYTE g, BYTE b) {
 	return ( (r+g+b)/3 );
+}
+
+int myCOL2HSI(BYTE col[SIZE], BYTE* hsi) {
+	for (int i = 0; i < PIXELS; i++) {
+		//hue
+		hsi[3*i] = RGBtoHue(col[3*i], col[3*i + 1], col[3*i + 2]);
+
+		//saturation
+		hsi[3*i+1] = RGBtoSat(col[3*i], col[3*i + 1], col[3*i + 2]);
+
+		//intensity
+		hsi[3*i+2] = RGBtoInt(col[3*i], col[3*i + 1], col[3*i + 2]);		
+	}	
+
+	return 0;
+}
+
+int myBinary(BYTE hsi[size], BYTE* bin, int hue, int hue_thresh, int intensity) {
+	for (int i = 0; i < PIXELS; i++) {
+		if ( 	( hsi[3*i] < ((hue + hue_thresh)%360) ) &&
+				( hsi[3*i] < ((hue_min - hue_thresh)%360) ) &&
+				( hsi[3*i+2] > intensity )
+		){
+			bin[i] = 0;
+		} else {
+			bin[i] = 1;
+		}
+ 	}
+
+ 	return 0;
 }
