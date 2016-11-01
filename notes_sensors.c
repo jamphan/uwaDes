@@ -1,12 +1,22 @@
 /* ----------------------------------------------------------------------------
- * PSD Sensors
+ * Sensors
  * ----------------------------------------------------------------------------
-
-	PSD = Position Sensitive Device
+	0. Sensor theory
+	1. Implementation of Interfaces
+	2. API functions
+	3. API usage examples
 */
 
 /* ----------------------------------------------------------------------------
- * Implementation of Interfaces
+ * 0. Sensor Theory
+ * ----------------------------------------------------------------------------*/
+/*
+
+	DIGITAL SENSORS
+		* Has a rise time?
+
+*//* ----------------------------------------------------------------------------
+ * 1. Implementation of Interfaces
  * ----------------------------------------------------------------------------*/
 
 //-------------------------------------
@@ -41,17 +51,22 @@ int psd() {
 }
         
 /* ----------------------------------------------------------------------------
- * API Functions
+ * 2. API Functions
  * ----------------------------------------------------------------------------*/
  #include <eyebot.h>
 
 //Delivers actual timestamp or distance (mm) measured by the selected PSD (int psd)
+// psd = 1: front senor
+// psd = 2: left sensor
 int PSDGet(int psd)
 
 //Returns the RAW sensor reading measure by selected PSD (int psd)
+//apparently returns in mm??
+//Just use this one??
+//Read in Front sensor before Left sensor
 int PSDGetRaw(int psd)
 
 /* ----------------------------------------------------------------------------
- * C API examples
+ * 3. API Usage Examples
  * ----------------------------------------------------------------------------*/
  int sensorRead = PSDGetRaw(2);

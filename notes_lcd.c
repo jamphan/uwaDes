@@ -1,6 +1,6 @@
 //LCD Control notes
 //-----------------------------------------------------------------------------
-//LCD control
+//API Functions
 
 //Set the text cursor position to (row, col). always returns 0
 int LCDSetPos(int row, int col)
