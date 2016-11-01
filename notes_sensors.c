@@ -30,6 +30,7 @@ int psd() {
 
 	//If PSD output (in1) == 0; !in1 == 1
 	//I.e. Check for sensor readout every 100us 
+	//UNLESS WE READ ON FALLING EDGE
 	while (!in1) {
 		//Wait for line to rise in us
 		usleep(100);//microSecs
