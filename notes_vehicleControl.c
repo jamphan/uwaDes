@@ -37,7 +37,8 @@ int VWCurve(int dist, int angle, int lin_speed){}
 	}
 
 
-//Blocks until drive is complete
+//Suspends thread until drive is complete
+//Only after VWTurn
 int VWDriveWait
 	if (err = VWStraight(10, 10)) {
 		printf("Error: VWDriveWait\n");
