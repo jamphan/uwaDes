@@ -67,15 +67,15 @@ int myCOL2HSI(BYTE col[SIZE], BYTE* hsi) {
 	return 0;
 }
 
-int myBinary(BYTE hsi[size], BYTE* bin, int hue, int hue_thresh, int intensity) {
+int myBinary(BYTE hsi[size], BYTE* bin, int hue_thresh, int hue_range, int intensity) {
 	for (int i = 0; i < PIXELS; i++) {
-		if ( 	( hsi[3*i] < ((hue + hue_thresh)%360) ) &&
-				( hsi[3*i] < ((hue_min - hue_thresh)%360) ) &&
-				( hsi[3*i+2] > intensity )
+		if ( 	( hsi[3*i] < ((hue_thresh + hue_range)%360) ) &&// if given HUE less than MAX
+				( hsi[3*i] > ((hue_thresh - hue_range)%360) ) &&// if given HUE greater than MAX
+				( hsi[3*i+2] > intensity )//if given INTENSITY > required
 		){
-			bin[i] = 0;
+			bin[i] = 1;//satisfied our condition
 		} else {
-			bin[i] = 1;
+			bin[i] = 0;//did not satisfy our condition
 		}
  	}
 
